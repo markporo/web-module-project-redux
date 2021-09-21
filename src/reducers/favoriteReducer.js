@@ -2,7 +2,7 @@
 //- displayFavorites: a boolean that holds 
 //if favorite elements should be displayed in app
 
-import { ADD_FAVORITE, DISPLAY_FAVORITES, REMOVE_FAVORITE } from "../actions/favoriteActions"
+import { ADD_FAVORITE, TOGGLE_FAVORITES, REMOVE_FAVORITE } from "../actions/favoriteActions"
 
 const initialFavorites = {
     favorites: [],
@@ -19,9 +19,9 @@ const favoriteReducer = (state = initialFavorites, action) => {
         case REMOVE_FAVORITE:
             return {
                 ...state,
-                favorites: [state.favorites.filter(item => (action.payload !== item))]
+                favorites: [state.favorites.filter(movie => (action.payload !== movie))]
             }
-        case DISPLAY_FAVORITES:
+        case TOGGLE_FAVORITES:
             return {
                 ...state,
                 displayFavorites: !state.displayFavorites,

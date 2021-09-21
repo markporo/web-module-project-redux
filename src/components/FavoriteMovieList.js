@@ -7,19 +7,24 @@ import { removeFavorite } from "../actions/favoriteActions"
 const FavoriteMovieList = (props) => {
     const favorites = props.favorites;
 
-    const handleRemoveClick = (e) => {
-        props.removeFavorite(e.target.value)
-    }
+    // const handleRemoveClick = (movie) => {
+    //     // e.preventDefault()
+    //     console.log();
+    //     // props.removeFavorite(e.target.value)
+    // }
+
 
     return (<div className="col-xs savedContainer">
         <h5>Favorite Movies</h5>
         {
             favorites.map(movie => {
-                return <div key={movie.id}>
+                return <div onClick={() => { props.removeFavorite(movie) }} key={movie.id}>
+
                     <Link className="btn btn-light savedButton" to={`/movies/${movie.id}`}>
                         {movie.title}
-                        <span><span onClick={handleRemoveClick} class="material-icons">remove_circle</span></span>
+                        <span ><span className="material-icons">remove_circle</span></span>
                     </Link>
+
                 </div>
             })
         }

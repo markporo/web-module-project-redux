@@ -14,13 +14,17 @@ const Movie = (props) => {
 
     const handleDelete = (e) => {
         e.preventDefault();
-        props.deleteMovie(movie.id);
+        props.deleteMovie(movie);
         push('/movies');
     }
 
     const handleFavoriteClick = (e) => {
         e.preventDefault();
-        props.addFavorite(movie);
+        if (props.favorites.includes(movie)) {
+            console.log("movie alread in this list")
+        } else {
+            props.addFavorite(movie);
+        }
     }
 
 
@@ -67,6 +71,7 @@ const mapStateToProps = state => {
     return {
         movies: state.movieReducer.movies,
         displayFavorites: state.favoriteReducer.displayFavorites,
+        favorites: state.favoriteReducer.favorites,
     }
 }
 
