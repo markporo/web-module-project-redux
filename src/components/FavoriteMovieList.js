@@ -12,7 +12,7 @@ const FavoriteMovieList = (props) => {
     //     console.log();
     //     // props.removeFavorite(e.target.value)
     // }
-
+    console.log(props);
 
     return (<div className="col-xs savedContainer">
         <h5>Favorite Movies</h5>
